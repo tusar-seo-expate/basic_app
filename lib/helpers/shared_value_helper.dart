@@ -26,9 +26,9 @@ final SharedValue<String> appLanguage = SharedValue(
 );
 
 
-final SharedValue<String> appTheme = SharedValue(
-    value: "light", // initial value
-    key: "app_theme",
+final SharedValue<bool> appThemeIsDark = SharedValue(
+    value: false, // initial value
+    key: "app_theme_is_dark",
     autosave: true// disk storage key for shared_preferences
 );
 

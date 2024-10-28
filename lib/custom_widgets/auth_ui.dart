@@ -8,7 +8,6 @@ import '../configs/style_config.dart';
 class AuthScreen{
   static Widget buildScreen(BuildContext context,Widget child){
     return Scaffold(
-      backgroundColor: Colors.white,
       body:Container(
         alignment: Alignment.center,
         height: DeviceInfo.height,
@@ -40,7 +39,7 @@ class AuthScreen{
                         width: 250,
                         height: 250,
 
-                        child:Image.asset(getAssetLogo("app_logo.jpg"),fit: BoxFit.fill) ,
+                        child:Image.asset(getAssetLogo("app_logo.png"),fit: BoxFit.fill) ,
                       ),
                     ],
                   ),

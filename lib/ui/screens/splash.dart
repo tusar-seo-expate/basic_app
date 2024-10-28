@@ -55,7 +55,6 @@ class _SplashState extends State<Splash> {
           Container(
             padding: EdgeInsets.symmetric(horizontal: 8, vertical: 8),
             width: 150,
-            decoration: BoxDecorations.shadow(radius: 8),//.copyWith(color: Colors.red),
             child: Column(
               mainAxisSize: MainAxisSize.min,
               crossAxisAlignment: CrossAxisAlignment.center,
@@ -63,7 +62,7 @@ class _SplashState extends State<Splash> {
               children: [
                 Container(
                   child: Image.asset(
-                    getAssetLogo("app_logo.jpg"),
+                    getAssetLogo("app_logo.png"),
                     width: 150,
                     height: 150,
                     fit: BoxFit.cover,
@@ -101,12 +100,12 @@ class _SplashState extends State<Splash> {
               children: [
                 Text(
                   AppConfig.appName,
-                  style: StyleConfig.fsMedium,
+                  style: StyleConfig.fsMedium(context: context),
                   textAlign: TextAlign.center,
                 ),
                 Text(
                   "1.0.0",
-                  style: StyleConfig.fsMedium,
+                  style: StyleConfig.fsMedium(context: context),
                   textAlign: TextAlign.center,
                 ),
               ],

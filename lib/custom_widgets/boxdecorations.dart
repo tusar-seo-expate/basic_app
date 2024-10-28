@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 class BoxDecorations{
   static BoxDecoration basic(){
     return BoxDecoration(
+      color: ThemeConfig.white,
        border:Border.all(
         color: ThemeConfig.lightGrey,
         width: 1) ,
@@ -37,7 +38,7 @@ class BoxDecorations{
     );
   }
 
-  static BoxDecoration customRadius({required BorderRadiusGeometry radius,Color color = ThemeConfig.white,BoxBorder? border }){
+  static BoxDecoration customRadius({required BorderRadiusGeometry radius,Color? color,BoxBorder? border }){
     return BoxDecoration(
       borderRadius : radius,
       boxShadow : [

@@ -1,4 +1,5 @@
 import 'package:basic_app/configs/style_config.dart';
+import 'package:basic_app/custom_widgets/image_view.dart';
 import 'package:basic_app/custom_widgets/t_appbar.dart';
 import 'package:basic_app/helpers/main_helper.dart';
 import 'package:basic_app/others/t_routes.dart';
@@ -13,20 +14,24 @@ class SettingsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: TAppbar.build(title: getLocal(context).settings),
+      appBar: TAppbar.build(context: context,title: getLocal(context).settings),
       body: SingleChildScrollView(
         padding: EdgeInsets.symmetric(horizontal: StyleConfig.padding),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            SizedBox(height: 14,),
-            Text(getLocal(context).app_settings,style: StyleConfig.fsBig,),
-            buildAppSettingsItem(context,getLocal(context).privacy,Icons.lock,Container()),
-            Divider(),
-            buildAppSettingsItem(context,getLocal(context).appearance,Icons.change_circle_outlined,AppearancePage()),
-            Divider(),
-            buildAppSettingsItem(context,getLocal(context).language,Icons.translate,LanguagePage()),
-            Divider(),
+/*
+            Padding(
+              padding: const EdgeInsets.symmetric(vertical: 14.0),
+              child: Text(getLocal(context).app_settings,style: StyleConfig.fsBig(context: context),),
+            ),*/
+            SizedBox(height: 10,),
+            buildAppSettingsItem(context,getLocal(context).privacy,getAssetIcon("unlock.png"),Container()),
+            Divider(color: Colors.grey,),
+            buildAppSettingsItem(context,getLocal(context).appearance,getAssetIcon("mode.png"),AppearancePage()),
+            Divider(color: Colors.grey,),
+            buildAppSettingsItem(context,getLocal(context).language,getAssetIcon("translate.png"),LanguagePage()),
+            // Divider(color: Colors.grey,),
 
           ],
         ),
@@ -34,7 +39,7 @@ class SettingsPage extends StatelessWidget {
     );
   }
 
-  Padding buildAppSettingsItem(BuildContext context,String title,IconData data,Widget goto) {
+  Padding buildAppSettingsItem(BuildContext context,String title,String data,Widget goto) {
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: InkWell(
@@ -43,12 +48,12 @@ class SettingsPage extends StatelessWidget {
         },
         child: Row(
           children: [
-            Icon(data,size: 18,),
+            ImageView.assetIcon(context,data),
             SizedBox(width: 10,),
-            Text(title,style: StyleConfig.fsMedium,),
+            Text(title,style: StyleConfig.fsMedium(context: context),),
 
             Spacer(),
-            Icon(Icons.arrow_forward_ios,size: 18,)
+            ImageView.assetIcon(context,getAssetIcon("next_light.png"))
           ],
         ),
       ),

@@ -23,7 +23,7 @@ class ImageView extends StatelessWidget {
     return Image.asset(link,width:width,height: height,color: color ,);
   }
 
-  static assetIcon(String image)=>assetSimple(image,width: 24,height: 24,color: Theme.of(globalState.currentState!.context).iconTheme.color);
+  static assetIcon(BuildContext context,String image)=>assetSimple(image,width: 24,height: 24,color: Theme.of(context).iconTheme.color);
 
 static Widget assetCircle({required String assetUrl,required double height , required double width, Color? color,Color? imageColor}){
     return Container(

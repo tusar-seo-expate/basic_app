@@ -14,7 +14,7 @@ class AppearancePage extends GetView<AppSettingController> {
   @override
   Widget build(BuildContext context) {
     return  Scaffold(
-      appBar: TAppbar.build(title: getLocal(context).appearance),
+      appBar: TAppbar.build(context: context,title: getLocal(context).appearance),
       body:Obx(() =>Padding(
         padding: const EdgeInsets.all(StyleConfig.padding),
         child: Column(
@@ -24,7 +24,7 @@ class AppearancePage extends GetView<AppSettingController> {
               children: [
                 Flexible(
                     flex: 10,
-                    child: Text(getLocal(context).dark_mode,style: StyleConfig.fsMedium,)),
+                    child: Text(getLocal(context).dark_mode,style: StyleConfig.fsMedium(context: context),)),
                 Flexible(
                     flex: 2,child: Switch(
                   materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,

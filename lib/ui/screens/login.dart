@@ -3,9 +3,11 @@ import 'package:basic_app/configs/theme_config.dart';
 import 'package:basic_app/controllers/auth/auth_controller.dart';
 import 'package:basic_app/custom_widgets/auth_ui.dart';
 import 'package:basic_app/custom_widgets/buttons.dart';
+import 'package:basic_app/custom_widgets/form_model.dart';
 import 'package:basic_app/custom_widgets/input_decorations.dart';
 import 'package:basic_app/helpers/device_info.dart';
 import 'package:basic_app/helpers/main_helper.dart';
+import 'package:basic_app/others/t_routes.dart';
 import 'package:basic_app/ui/screens/registration.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -34,15 +36,17 @@ class Login extends GetView<AuthController> {
             padding: const EdgeInsets.only(bottom: 4.0),
             child: Text(
               getLocal(context).login,
-              style: StyleConfig.fsXXBig,
+              style: StyleConfig.fsXXBig(context: context),
               textAlign: TextAlign.center,
             ),
           ),
-          Padding(
+
+          TFormModel.editTextdWithPrefix(context, controller.emailControllerOfLoginCon.value, getLocal(context).email, Icons.account_circle_rounded, "user@example.com"),
+          /*Padding(
             padding: const EdgeInsets.only(bottom: 4.0),
             child: Text(
               getLocal(context).email,
-              style: StyleConfig.fsMedium,
+              style: StyleConfig.fsMedium(context: context),
             ),
           ),
           Padding(
@@ -56,23 +60,22 @@ class Login extends GetView<AuthController> {
                     keyboardType:TextInputType.emailAddress ,
                     controller: controller.emailControllerOfLoginCon.value,
                     autofocus: false,
+                    style: StyleConfig.fsMedium(context: context),
+                    cursorColor:themeColorAlter ,
                     decoration: InputDecorations.basic(
                         prefixIcon: Icon(
-                          Icons.account_circle_rounded,
-                          size: 18,
-                          color: ThemeConfig.mediumGrey,
-                        ),
-                        hint_text: "user@example.com"),
+                          Icons.account_circle_rounded,),
+                        hint_text: ),
                   ),
                 ),
               ],
             ),
-          ),
-          Padding(
+          ),*/
+         /* Padding(
             padding: const EdgeInsets.only(bottom: 4.0),
             child: Text(
-              getLocal(context).password,
-              style: StyleConfig.fsMedium,
+              ,
+              style: StyleConfig.fsMedium(context: context),
             ),
           ),
           Padding(
@@ -83,18 +86,17 @@ class Login extends GetView<AuthController> {
                 Container(
                   height: 36,
                   child: TextField(
-                    controller: controller.passwordControllerOfLoginCon.value,
+                    controller: ,
                     autofocus: false,
                     obscureText: true,
                     enableSuggestions: false,
                     autocorrect: false,
+                    style: StyleConfig.fsMedium(context: context),
                     decoration: InputDecorations.basic(
                         prefixIcon: Icon(
-                          Icons.lock,
-                          size: 18,
-                          color: ThemeConfig.mediumGrey,
+                          ,
                         ),
-                        hint_text: "• • • • • • • •"),
+                        hint_text: ),
                   ),
                 ),
                 /*Button(
@@ -114,6 +116,8 @@ class Login extends GetView<AuthController> {
               ],
             ),
           ),
+          */
+          TFormModel.editTextdWithPrefix(context, controller.passwordControllerOfLoginCon.value, getLocal(context).password, Icons.lock, "• • • • • • • •",isPassword: true),
 
           Padding(
             padding: const EdgeInsets.only(top: 30.0),
@@ -122,7 +126,7 @@ class Login extends GetView<AuthController> {
               child: Buttons.minSize(
                   width: DeviceInfo.width,
                   height: 50,
-                  color: ThemeConfig.accentColor,
+                  color: ThemeConfig.primaryBtnColor,
                   shape: const RoundedRectangleBorder(
                       borderRadius: BorderRadius.all(Radius.circular(6.0))),
                   child: const Text(
@@ -142,7 +146,7 @@ class Login extends GetView<AuthController> {
               padding: EdgeInsets.only(top: 20),
               child: Text(
                 "Or",
-                style:StyleConfig.fsNormal,
+                style:StyleConfig.fsNormal(context: context),
                 textAlign: TextAlign.center,
               )),
           Padding(
@@ -152,7 +156,7 @@ class Login extends GetView<AuthController> {
               child: Buttons.minSize(
                   width: DeviceInfo.width,
                   height: 50,
-                  color: ThemeConfig.secondaryColor,
+                  color: ThemeConfig.secondaryBtnColor,
                   shape: const RoundedRectangleBorder(
                       borderRadius: BorderRadius.all(Radius.circular(6.0))),
                   child: const Text(
@@ -163,8 +167,7 @@ class Login extends GetView<AuthController> {
                         fontWeight: FontWeight.w600),
                   ),
                   onPressed: () {
-
-                    Get.to(Registration());
+                   TRoutes.go(context,Registration());
                   }),
             ),
           ),

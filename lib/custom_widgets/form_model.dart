@@ -14,7 +14,7 @@ import 'package:intl/intl.dart';
 
 import 'buttons.dart';
 
-class SeoFormModel {
+class TFormModel {
   static Widget textFieldAndDropDowRow(
       {required BuildContext context,
       required String editTextTitle,
@@ -31,7 +31,7 @@ class SeoFormModel {
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         buildFormItemModel(context, editTextTitle,
-            editTextField(controller, hint, readOnly: readOnly)),
+            editTextField(context,controller, hint, readOnly: readOnly)),
         buildFormItemModel(
             context,
             dropdownTitle,
@@ -70,7 +70,7 @@ class SeoFormModel {
                 onSelected: onSelected,
                 isDataInit: isDropDownInit)),
         buildFormItemModel(context, editTextTitle,
-            editTextField(controller, hint, readOnly: readOnly)),
+            editTextField(context,controller, hint, readOnly: readOnly)),
       ],
     ));
   }
@@ -83,7 +83,7 @@ class SeoFormModel {
       required TextEditingController controller,
       double height = 64}) {
     return buildSectionModel(buildFormItemModel(context, editTextTitle,
-        editTextField(controller, hint, readOnly: readOnly),
+        editTextField(context,controller, hint, readOnly: readOnly),
         isFullWidth: true, height: height));
   }
 
@@ -131,13 +131,13 @@ class SeoFormModel {
         buildFormItemModel(
             context,
             editTextTitle1,
-            editTextField(controller1, hint1,
+            editTextField(context,controller1, hint1,
                 readOnly: readOnly1, formatter: formatter, info: info),
             height: (height ?? 64) + (info != null ? 10 : 0)),
         buildFormItemModel(
             context,
             editTextTitle2,
-            editTextField(controller2, hint2,
+            editTextField(context,controller2, hint2,
                 readOnly: readOnly2, formatter: formatter2, info: info2),
             height: (height ?? 64) + (info2 != null ? 10 : 0)),
       ],
@@ -160,7 +160,7 @@ class SeoFormModel {
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         buildFormItemModel(context, editTextTitle,
-            editTextField(controller, hint, readOnly: readOnly)),
+            editTextField(context,controller, hint, readOnly: readOnly)),
         buildFormItemModel(
             context,
             dateTitle,
@@ -347,7 +347,7 @@ class SeoFormModel {
       required Function(bool? data, T dt) onClickCheck}) {
     return buildSectionModel(
       Container(
-        child: checkBox(data, title, isChecked, onClickCheck),
+        child: checkBox(context,data, title, isChecked, onClickCheck),
       ),
     );
   }
@@ -486,7 +486,7 @@ class SeoFormModel {
                   children: [
                     Text(
                       "Edit...",
-                      style: StyleConfig.fsMedium,
+                      style: StyleConfig.fsMedium(context: context),
                     ),
                     // SizedBox(
                     //   width: 10,
@@ -544,7 +544,7 @@ class SeoFormModel {
                  children: [
                    Text(
                      "Edit...",
-                     style: StyleConfig.fsMedium,
+                     style: StyleConfig.fsMedium(context: context),
                    ),
                    // SizedBox(
                    //   width: 10,
@@ -598,7 +598,7 @@ class SeoFormModel {
             ),
             Text(
               "Yes, it's a round trip ",
-              style: StyleConfig.fsMedium,
+              style: StyleConfig.fsMedium(context: context),
             )
           ],
         ),
@@ -625,7 +625,7 @@ class SeoFormModel {
             ),
             Text(
               "No, it's one way trip.",
-              style: StyleConfig.fsMedium,
+              style: StyleConfig.fsMedium(context: context),
             )
           ],
         ),
@@ -659,7 +659,7 @@ class SeoFormModel {
               currentDate == null
                   ? "mm/dd/yyyy"
                   : DateFormat('MM/dd/yyyy').format(currentDate),
-              style: StyleConfig.fsMedium,
+              style: StyleConfig.fsMedium(context: context),
             ),
             Icon(
               Icons.calendar_month,
@@ -688,7 +688,7 @@ class SeoFormModel {
           children: [
             Text(
               time == null ? "--:--" : "${time.hour}:${time.minute}",
-              style: StyleConfig.fsMedium,
+              style: StyleConfig.fsMedium(context: context),
             ),
             Icon(
               Icons.watch_later_outlined,
@@ -718,7 +718,7 @@ class SeoFormModel {
       // constraints: BoxConstraints(minHeight: height,minWidth:isFullWidth?DeviceInfo.width:DeviceInfo.width * 0.5 - 20 ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
-        children: [buildLabel(title), field],
+        children: [buildLabel(context,title), field],
       ),
     );
   }
@@ -733,7 +733,7 @@ class SeoFormModel {
               isFullWidth ? DeviceInfo.width : DeviceInfo.width * 0.5 - 20),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
-        children: [buildLabel(title), field],
+        children: [buildLabel(context,title), field],
       ),
     );
   }
@@ -756,14 +756,14 @@ class SeoFormModel {
               underline: SizedBox.shrink(),
               isExpanded: true,
               value: selectedValue,
-              style: StyleConfig.fsMedium,
+              style: StyleConfig.fsMedium(context: context),
               items: data
                   .map<DropdownMenuItem<KeyValueModel>>(
                       (e) => DropdownMenuItem<KeyValueModel>(
                             value: e,
                             child: Text(
                               e.value,
-                              style: StyleConfig.fsMedium,
+                              style: StyleConfig.fsMedium(context: context),
                               maxLines: 2,
                             ),
                           ))
@@ -778,7 +778,7 @@ class SeoFormModel {
     );
   }
 
-  static Widget editTextField(TextEditingController controller, String hint,
+  static Widget editTextField(BuildContext context,TextEditingController controller, String hint,
       {bool readOnly = false,
       List<TextInputFormatter>? formatter,
       String? info}) {
@@ -801,25 +801,27 @@ class SeoFormModel {
           if (info != null)
             Text(
               info,
-              style: StyleConfig.fsXSmall,
+              style: StyleConfig.fsXSmall(context:  context),
             )
         ],
       ),
     );
   }
 
-  static buildLabel(String title) {
+  static buildLabel(BuildContext context,String title) {
     return Padding(
       padding: const EdgeInsets.only(bottom: 8.0),
       child: Text(
         title,
-        style: StyleConfig.fsMedium?.copyWith(fontWeight: FontWeight.bold),
+        style: StyleConfig.fsMedium(context: context)?.copyWith(fontWeight: FontWeight.w600),
       ),
     );
   }
 
   static Widget selectSuggestionField(
-      {required RxList<String> suggestions,
+      {
+        required BuildContext context,
+        required RxList<String> suggestions,
       required RxList selectedStrings,
       required TextEditingController controller,
       String hint = "Text...",
@@ -854,7 +856,7 @@ class SeoFormModel {
                                 ),
                                 Text(
                                   selectedStrings[index],
-                                  style: StyleConfig.fsMedium,
+                                  style: StyleConfig.fsMedium(context: context),
                                 ),
                               ],
                             )).small,
@@ -912,7 +914,7 @@ class SeoFormModel {
         ));
   }
 
-  static Widget checkBox<T>(T data, String title, bool isChecked,
+  static Widget checkBox<T>(BuildContext context,T data, String title, bool isChecked,
       Function(bool? isChecked, T dt) onClickCheck) {
     return Buttons(
       // color: Colors.red,
@@ -928,10 +930,39 @@ class SeoFormModel {
               }),
           Text(
             title,
-            style: StyleConfig.fsMedium,
+            style: StyleConfig.fsMedium(context: context),
           )
         ],
       ),
     ).small;
   }
+
+
+  static Widget editTextdWithPrefix(BuildContext context,TextEditingController controller,String title,IconData prefix,String hint,
+      {bool isPassword=false}){
+    return buildFormItemModel(
+     context,
+        title,
+        SizedBox(
+          height: 36,
+          child: TextField(
+            controller: controller,
+            autofocus: false,
+            obscureText: isPassword,
+            enableSuggestions: false,
+            autocorrect: false,
+            cursorColor:themeColorAlter ,
+            style: StyleConfig.fsMedium(context: context),
+            decoration: InputDecorations.basic(
+                prefixIcon: Icon(
+                  prefix,
+                ),
+                hint_text: hint),
+          ),
+        ),
+      isFullWidth: true
+
+    );
+  }
+
 }

@@ -20,7 +20,7 @@ class Loader {
                 ),
                 Text(
                   "Loading...",
-                  style: StyleConfig.fsBig,
+                  style: StyleConfig.fsBig(context:  context),
                 ),
               ],
             ),

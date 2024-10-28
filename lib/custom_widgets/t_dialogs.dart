@@ -15,11 +15,11 @@ class Dialogs {
               title: Text(
                 title,
                 style:
-                    StyleConfig.fsMedium?.copyWith(color: ThemeConfig.black),
+                    StyleConfig.fsMedium(context: context)?.copyWith(color: ThemeConfig.black),
               ),
               content: Text(
                 content,
-                style: StyleConfig.fsMedium?.copyWith(color: ThemeConfig.black),
+                style: StyleConfig.fsMedium(context: context)?.copyWith(color: ThemeConfig.black),
               ),
               actions: [
                 CupertinoDialogAction(
@@ -32,7 +32,7 @@ class Dialogs {
                     // color: Colors.grey,
                     child: Text(
                       "Yes",
-                      style: StyleConfig.fsMedium
+                      style: StyleConfig.fsMedium(context: context)
                           ?.copyWith(color: ThemeConfig.red),
                     )),
                 CupertinoDialogAction(
@@ -44,7 +44,7 @@ class Dialogs {
                     // color: Colors.grey,
                     child: Text(
                       "NO",
-                      style: StyleConfig.fsMedium,
+                      style: StyleConfig.fsMedium(context: context),
                     )),
               ],
             ));
@@ -64,11 +64,11 @@ class Dialogs {
               title: Text(
                 title,
                 style:
-                    StyleConfig.fsMedium?.copyWith(color: ThemeConfig.black),
+                    StyleConfig.fsMedium(context: context)?.copyWith(color: ThemeConfig.black),
               ),
               content: Text(
                 content,
-                style: StyleConfig.fsMedium?.copyWith(color: ThemeConfig.black),
+                style: StyleConfig.fsMedium(context: context)?.copyWith(color: ThemeConfig.black),
               ),
               actions: [
                 CupertinoDialogAction(
@@ -81,7 +81,7 @@ class Dialogs {
                     // color: Colors.grey,
                     child: Text(
                       yes ?? "Yes",
-                      style: StyleConfig.fsMedium
+                      style: StyleConfig.fsMedium(context: context)
                           ?.copyWith(color: ThemeConfig.green),
                     )),
                 CupertinoDialogAction(
@@ -93,7 +93,7 @@ class Dialogs {
                     // color: Colors.grey,
                     child: Text(
                       no ?? "No",
-                      style: StyleConfig.fsMedium?.copyWith(color: ThemeConfig.grey),
+                      style: StyleConfig.fsMedium(context: context)?.copyWith(color: ThemeConfig.grey),
                     )),
               ],
             ));
@@ -108,7 +108,7 @@ class Dialogs {
         builder: (context) => CupertinoAlertDialog(
               content: Text(
                 content,
-                style: StyleConfig.fsMedium?.copyWith(color: ThemeConfig.black),
+                style: StyleConfig.fsMedium(context: context)?.copyWith(color: ThemeConfig.black),
               ),
               actions: [
                 CupertinoDialogAction(
@@ -122,7 +122,7 @@ class Dialogs {
                     // color: Colors.grey,
                     child: Text(
                       "OK",
-                      style: StyleConfig.fsMedium
+                      style: StyleConfig.fsMedium(context: context)
                           ?.copyWith(color: ThemeConfig.accentColor),
                     )),
               ],
@@ -138,7 +138,7 @@ class Dialogs {
         builder: (context) => CupertinoAlertDialog(
               content: Text(
                 content,
-                style: StyleConfig.fsMedium?.copyWith(color: ThemeConfig.red),
+                style: StyleConfig.fsMedium(context: context)?.copyWith(color: ThemeConfig.red),
               ),
               actions: [
                 CupertinoDialogAction(
@@ -152,7 +152,7 @@ class Dialogs {
                     // color: Colors.grey,
                     child: Text(
                       "OK",
-                      style: StyleConfig.fsMedium
+                      style: StyleConfig.fsMedium(context: context)
                           ?.copyWith(color: ThemeConfig.accentColor),
                     )),
               ],
@@ -174,13 +174,13 @@ class Dialogs {
               title: Text(
                 title,
                 style:
-                    StyleConfig.fsMedium?.copyWith(color: ThemeConfig.black),
+                    StyleConfig.fsMedium(context: context)?.copyWith(color: ThemeConfig.black),
               ),
               content: Column(
                 children: [
                   Text(
                     content,
-                    style: StyleConfig.fsMedium?.copyWith(color: ThemeConfig.black),
+                    style: StyleConfig.fsMedium(context: context)?.copyWith(color: ThemeConfig.black),
                   ),
                   contentWidget
                 ],
@@ -195,7 +195,7 @@ class Dialogs {
                     // color: Colors.grey,
                     child: Text(
                       yesTxt,
-                      style: StyleConfig.fsMedium
+                      style: StyleConfig.fsMedium(context: context)
                           ?.copyWith(color: ThemeConfig.red),
                     )),
                 CupertinoDialogAction(
@@ -207,7 +207,7 @@ class Dialogs {
                     // color: Colors.grey,
                     child: Text(
                       noTxt,
-                      style: StyleConfig.fsMedium,
+                      style: StyleConfig.fsMedium(context: context),
                     )),
               ],
             ));

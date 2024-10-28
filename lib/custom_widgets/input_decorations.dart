@@ -5,23 +5,7 @@ class InputDecorations {
   static InputDecoration basic({hint_text = "",Widget? prefixIcon}) {
     return InputDecoration(
       prefixIcon: prefixIcon,
-        hintText: hint_text,
-        filled: true,
-        fillColor: ThemeConfig.white,
-        hintStyle: TextStyle(fontSize: 12.0, color: ThemeConfig.lightGrey),
-        enabledBorder: OutlineInputBorder(
-          borderSide: BorderSide(color: ThemeConfig.grey),
-        ),
-        focusedBorder: OutlineInputBorder(
-          borderSide: BorderSide(
-              color: ThemeConfig.accentColor,
-              width: 1),
-          borderRadius: const BorderRadius.all(
-            const Radius.circular(2.0),
-          ),
-        ),
-
-        contentPadding: EdgeInsets.symmetric(horizontal: 16.0));
+        hintText: hint_text,);
   }
 
   static InputDecoration phone({hint_text = "",Widget?prefixIcon}) {

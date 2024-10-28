@@ -1,6 +1,10 @@
 import 'package:basic_app/configs/theme_config.dart';
+import 'package:basic_app/controllers/app_setting_controller.dart';
+import 'package:basic_app/helpers/device_info.dart';
 import 'package:basic_app/main.dart';
+import 'package:basic_app/ui/screens/settings/settings_page.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 
 
@@ -15,30 +19,31 @@ class StyleConfig {
 
   static RoundedRectangleBorder buttonsRadius(radius) => RoundedRectangleBorder(
       borderRadius: BorderRadius.circular(radius.toDouble()));
+  static Color iconColor ({BuildContext? context})=> Get.find<AppSettingController>().themeMode.value==ThemeMode.dark ?ThemeConfig.lightFontColor:ThemeConfig.darkFontColor;
 
-  static TextStyle? get fsAppbar =>  Theme.of(globalState.currentState!.context).textTheme.headlineSmall;
+  static TextStyle?  fsAppbar({BuildContext? context}) =>  Theme.of(context??DeviceInfo.context!).textTheme.displayMedium;
 
-  static TextStyle? get fsXXBig {
-    return Theme.of(globalState.currentState!.context).textTheme.headlineLarge;
+  static TextStyle?  fsXXBig({BuildContext? context}) {
+    return Theme.of(context??DeviceInfo.context!).textTheme.displayLarge;
   }
-   static TextStyle? get fsxBig {
-    return Theme.of(globalState.currentState!.context).textTheme.headlineMedium;
-  }
-
-     static TextStyle? get fsBig {
-    return Theme.of(globalState.currentState!.context).textTheme.displayLarge;
-  }
-  static TextStyle? get fsMedium {
-    return Theme.of(globalState.currentState!.context).textTheme.displayMedium;
+   static TextStyle?  fsxBig({BuildContext? context}) {
+    return Theme.of(context??DeviceInfo.context!).textTheme.displayMedium;
   }
 
-  static TextStyle? get fsNormal {
-    return Theme.of(globalState.currentState!.context).textTheme.displaySmall;
+     static TextStyle?  fsBig({BuildContext? context}) {
+    return Theme.of(context??DeviceInfo.context!).textTheme.bodyLarge;
   }
-   static TextStyle? get fsSmall {
-    return Theme.of(globalState.currentState!.context).textTheme.bodyMedium;
+  static TextStyle?  fsMedium({BuildContext? context}) {
+    return Theme.of(context??DeviceInfo.context!).textTheme.bodyMedium;
   }
-    static TextStyle? get fsXSmall {
-    return Theme.of(globalState.currentState!.context).textTheme.bodySmall;
+
+  static TextStyle?  fsNormal({BuildContext? context}) {
+    return Theme.of(context??DeviceInfo.context!).textTheme.displaySmall;
+  }
+   static TextStyle?  fsSmall({BuildContext? context}) {
+    return Theme.of(context??DeviceInfo.context!).textTheme.titleMedium;
+  }
+    static TextStyle?  fsXSmall({BuildContext? context}) {
+    return Theme.of(context??DeviceInfo.context!).textTheme.titleSmall;
   }
 }

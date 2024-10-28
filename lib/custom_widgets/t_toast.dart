@@ -8,6 +8,6 @@ class TToast {
       {gravity=Toast.center,duration = 4}
       ) {
      ToastContext().init(context);
-    Toast.show(message.toString(), backgroundColor: ThemeConfig.white,textStyle: StyleConfig.fsMedium?.copyWith(fontWeight: FontWeight.normal),border: Border.all(width: 1,color: ThemeConfig.grey,),gravity: gravity,duration: duration);
+    Toast.show(message.toString(), backgroundColor: ThemeConfig.white,textStyle: StyleConfig.fsMedium(context: context)?.copyWith(fontWeight: FontWeight.normal),border: Border.all(width: 1,color: ThemeConfig.grey,),gravity: gravity,duration: duration);
   }
 }

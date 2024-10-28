@@ -1,6 +1,7 @@
 
 import 'dart:io';
 import 'package:basic_app/configs/app_config.dart';
+import 'package:basic_app/configs/theme_config.dart';
 import 'package:basic_app/helpers/shared_value_helper.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/cupertino.dart';
@@ -149,5 +150,9 @@ TextInputFormatter  addressFormatter() => TextInputFormatter.withFunction((oldVa
 
 
 AppLocalizations getLocal(BuildContext context)=>AppLocalizations.of(context)!;
+
+
+Color get themeColor=>appThemeIsDark.$?ThemeConfig.darkFontColor:ThemeConfig.lightFontColor;
+Color get themeColorAlter=>appThemeIsDark.$?ThemeConfig.lightFontColor:ThemeConfig.darkFontColor;
 
 

@@ -1,7 +1,11 @@
 import 'package:basic_app/configs/style_config.dart';
 import 'package:basic_app/configs/theme_config.dart';
+import 'package:basic_app/controllers/app_setting_controller.dart';
 import 'package:basic_app/helpers/device_info.dart';
+import 'package:basic_app/helpers/shared_value_helper.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:get/get_state_manager/src/rx_flutter/rx_obx_widget.dart';
 class Buttons extends StatelessWidget {
   final Color? color;
   final OutlinedBorder? shape;
@@ -39,6 +43,7 @@ class Buttons extends StatelessWidget {
           minimumSize: minWidth == null ? null : Size(
               minWidth.toDouble(), minHeight ?? 10),
           alignment: alignment,
+          tapTargetSize: MaterialTapTargetSize.shrinkWrap,
           shape: shape),
       onPressed: onPressed,
       child: child,
@@ -107,6 +112,40 @@ class Buttons extends StatelessWidget {
     );
   }
 
+  static Widget theme(
+      {width, height, shape, child, dynamic onPressed, padding}) {
+    return Obx( () {
+        return TextButton(
+          style: TextButton.styleFrom(
+              foregroundColor: Get.find<AppSettingController>().themeMode.value == ThemeMode.dark?ThemeConfig.darkFontColor:ThemeConfig.lightFontColor,
+              fixedSize: Size(width, height),
+              backgroundColor: Get.find<AppSettingController>().themeMode.value == ThemeMode.dark?ThemeConfig.lightFontColor:ThemeConfig.darkFontColor,
+              padding: padding,
+              shape: shape),
+          child: child,
+          onPressed: onPressed,
+        );
+      }
+    );
+  }
+
+  static Widget themeBorder(
+      {width, height, child, dynamic onPressed, padding}) {
+    return TextButton(
+      style: TextButton.styleFrom(
+        // foregroundColor: Get.find<AppSettingController>().themeMode.value == ThemeMode.dark?ThemeConfig.lightFontColor:ThemeConfig.darkFontColor,
+          foregroundColor: appThemeIsDark.$?ThemeConfig.lightFontColor:ThemeConfig.darkFontColor,
+          minimumSize: Size(width, height),
+          maximumSize: Size(width, height),
+          tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+          backgroundColor: appThemeIsDark.$?ThemeConfig.darkFontColor:ThemeConfig.lightFontColor,
+          padding: padding,
+          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8),side: BorderSide(color: appThemeIsDark.$?ThemeConfig.lightFontColor:ThemeConfig.darkFontColor,width: 1))),
+      child: child,
+      onPressed: onPressed,
+    );
+  }
+
   static Widget icon({required void Function() onPress,required IconData icon,Color? color = Colors.grey,height =25,width=25}) {
     return
       Container(
@@ -128,14 +167,14 @@ class Buttons extends StatelessWidget {
       );
   }
 
-  static save(VoidCallback onPress){
-    return  Buttons(onPressed: onPress,child: Text("Save",style: StyleConfig.fsNormal,),color: ThemeConfig.accentColor,minWidth: DeviceInfo.width,minHeight: 50.0,);
+  static save(BuildContext context,VoidCallback onPress){
+    return  Buttons(onPressed: onPress,child: Text("Save",style: StyleConfig.fsNormal(context: context),),color: ThemeConfig.accentColor,minWidth: DeviceInfo.width,minHeight: 50.0,);
   }
-  static update(VoidCallback onPress){
-    return  Buttons(onPressed: onPress,child: Text("Update",style: StyleConfig.fsNormal,),color: ThemeConfig.accentColor,minWidth: DeviceInfo.width,minHeight: 50.0,);
+  static update(BuildContext context,VoidCallback onPress){
+    return  Buttons(onPressed: onPress,child: Text("Update",style: StyleConfig.fsNormal(context: context),),color: ThemeConfig.accentColor,minWidth: DeviceInfo.width,minHeight: 50.0,);
   }
-  static send(VoidCallback onPress){
-    return  Buttons(onPressed: onPress,child: Text("Send",style: StyleConfig.fsNormal,),color: ThemeConfig.accentColor,minWidth: DeviceInfo.width,minHeight: 50.0,);
+  static send(BuildContext context,VoidCallback onPress){
+    return  Buttons(onPressed: onPress,child: Text("Send",style: StyleConfig.fsNormal(context: context),),color: ThemeConfig.accentColor,minWidth: DeviceInfo.width,minHeight: 50.0,);
   }
 
 

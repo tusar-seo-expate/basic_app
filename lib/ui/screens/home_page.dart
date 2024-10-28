@@ -16,7 +16,7 @@ class HomePage extends GetView<IndexController> {
       body: Container(
           height: getHeight(context),
           padding: EdgeInsets.symmetric(horizontal: 8, vertical: 8),
-          decoration: BoxDecorations.shadow(radius: 8),//.copyWith(color: Colors.red),
+          //decoration: BoxDecorations.shadow(radius: 8),//.copyWith(color: Colors.red),
           child:Column(
             mainAxisSize: MainAxisSize.min,
             crossAxisAlignment: CrossAxisAlignment.center,
@@ -38,8 +38,8 @@ class HomePage extends GetView<IndexController> {
                 ],
               ),
               Text(AppConfig.appName,
-                style: StyleConfig.fsMedium,
-                // style: StyleConfig.fsMedium,
+                style: StyleConfig.fsMedium(context: context),
+                // style: StyleConfig.fsMedium(context: context),
               ),
               SizedBox(height: 10,),
             ],
